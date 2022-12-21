@@ -171,7 +171,7 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // _key
             // 
-            this._key.Location = new System.Drawing.Point(12, 83);
+            this._key.Location = new System.Drawing.Point(12, 25);
             this._key.Mask = "0999";
             this._key.Name = "_key";
             this._key.Size = new System.Drawing.Size(165, 20);
@@ -179,7 +179,7 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // _addr
             // 
-            this._addr.Location = new System.Drawing.Point(12, 27);
+            this._addr.Location = new System.Drawing.Point(12, 100);
             this._addr.Mask = "0 0 0";
             this._addr.Name = "_addr";
             this._addr.Size = new System.Drawing.Size(165, 20);
@@ -187,7 +187,7 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // searchAddr
             // 
-            this.searchAddr.Location = new System.Drawing.Point(210, 25);
+            this.searchAddr.Location = new System.Drawing.Point(210, 98);
             this.searchAddr.Name = "searchAddr";
             this.searchAddr.Size = new System.Drawing.Size(106, 23);
             this.searchAddr.TabIndex = 8;
@@ -197,7 +197,7 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // searchKey
             // 
-            this.searchKey.Location = new System.Drawing.Point(210, 81);
+            this.searchKey.Location = new System.Drawing.Point(210, 23);
             this.searchKey.Name = "searchKey";
             this.searchKey.Size = new System.Drawing.Size(106, 23);
             this.searchKey.TabIndex = 8;
@@ -211,7 +211,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(15, 48);
+            this.label1.Location = new System.Drawing.Point(15, 121);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 24);
             this.label1.TabIndex = 9;
@@ -223,7 +223,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(58, 2);
+            this.label2.Location = new System.Drawing.Point(58, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 24);
             this.label2.TabIndex = 9;
@@ -235,7 +235,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(122, 47);
+            this.label3.Location = new System.Drawing.Point(122, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 24);
             this.label3.TabIndex = 9;
@@ -354,11 +354,11 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // changeLine
             // 
-            this.changeLine.Location = new System.Drawing.Point(210, 157);
+            this.changeLine.Location = new System.Drawing.Point(210, 151);
             this.changeLine.Name = "changeLine";
-            this.changeLine.Size = new System.Drawing.Size(106, 23);
+            this.changeLine.Size = new System.Drawing.Size(106, 36);
             this.changeLine.TabIndex = 8;
-            this.changeLine.Text = "Изменить строку";
+            this.changeLine.Text = "Изменить строку по адресу";
             this.changeLine.UseVisualStyleBackColor = true;
             this.changeLine.Click += new System.EventHandler(this.changeLine_Click);
             // 

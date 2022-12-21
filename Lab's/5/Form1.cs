@@ -63,6 +63,7 @@ namespace ЭВМ_Лаб_4__WF_
             else
             {
                 int index = MM.SearchByKey(key, out time, out line);
+                int page = (index - 1) / 10;
 
                 _loadPlace.Text = "ОП";
                 _time.Text = time;
@@ -78,21 +79,22 @@ namespace ЭВМ_Лаб_4__WF_
 
                 string oldLine = Cache.SetLine(lines[index - 1], index % 10);
 
-
-                if (!oldLine.Equals(""))
+                if (index % 10 == 0)
                 {
-                    if (index % 10 == 0)
-                    {
-                        index = 10;
-                    }
-                    else
-                    {
-                        index = index % 10;
-                    }
-
-                    string temp = _cache.Rows[index - 1].Cells[2].Value.ToString();
-                    MM.SetLine(oldLine, (Convert.ToInt32(temp) - 1) * 10 + index);
+                    index = 10;
                 }
+                else
+                {
+                    index = index % 10;
+                }
+
+                if (!oldLine.Equals(string.Empty))
+                {
+                    MM.SetLine(oldLine, page * 10 + index);
+                }
+
+                _cache.Rows[index - 1].Cells[2].Value = page + 1;
+
             }
 
             ReloadMM();
@@ -109,52 +111,127 @@ namespace ЭВМ_Лаб_4__WF_
 
         private void searchAddr_Click(object sender, EventArgs e)
         {
-            _loadPlace.Text = "ОП";
+
             string[] key = _addr.Text.Split(' ');
-
             string time = "", el = "", line = "";
+            _loadPlace.Text = "КЭШ";
 
-            MM.SearchByAddr(Convert.ToInt32(key[0]), Convert.ToInt32(key[1]) + 1, Convert.ToInt32(key[2]) + 1,
-                out time, out el, out line);
+            if (Convert.ToInt32(key[2]) > 3)
+            {
+                _time.Text = "...";
+                _loadEl.Text = "Елемент не найден";
+                _loadLine.Text = "...";
+                _loadPlace.Text = "...";
+                return;
+            }
 
+            string currPage = _cache.Rows[Convert.ToInt32(key[1])].Cells[2].Value.ToString();
+            
+
+            if (!Cache.SearchByAddr(Convert.ToInt32(key[1]), Convert.ToInt32(key[2]),
+                out time, out el, out line) || (!currPage.Equals(key[0]) && !currPage.Equals(string.Empty)))
+            {
+                _loadPlace.Text = "ОП";
+
+                MM.SearchByAddr(Convert.ToInt32(key[0]), Convert.ToInt32(key[1]) + 1, Convert.ToInt32(key[2]) + 1,
+                    out time, out el, out line);
+
+                string oldLine = Cache.SetLine(line, Convert.ToInt32(key[1]) + 1);
+                _cache.Rows[Convert.ToInt32(key[1])].Cells[2].Value = Convert.ToInt32(key[0]);
+
+                if (!oldLine.Equals(string.Empty))
+                {
+                    MM.SetLine(oldLine, Convert.ToInt32(key[0]) * 10 + Convert.ToInt32(key[1]));
+                }
+
+                ReloadMM();
+                ReloadCache();
+
+            }
+            
             _time.Text = time;
             _loadEl.Text = el;
             _loadLine.Text = line;
+
         }
 
         private void _cache_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (_cache.CurrentCell.ColumnIndex == 1) //_cache.SelectedCells.Count == 1 && _cache.CurrentCell.ColumnIndex == 1)
+
+            string page = _cache.Rows[_cache.CurrentCell.RowIndex].Cells[2].Value.ToString();
+            string line = (_cache.CurrentCell.RowIndex).ToString();
+
+            if (_cache.CurrentCell.ColumnIndex == 1)
             {
                 newLine.Text = _cache.CurrentCell.Value.ToString().Replace(' ', ',');
+                _addr.Text = page + line + "0";
             }
         }
 
         private void changeLine_Click(object sender, EventArgs e)
         {
-            if (Cache.GetLine(_cache.CurrentCell.RowIndex + 1) == "   ")
+            string[] data = _addr.Text.Split(' ');
+
+            int page = Convert.ToInt32(data[0]);
+            int line = Convert.ToInt32(data[1]);
+            int number = Convert.ToInt32(data[2]);
+
+            if (number > 3)
             {
+                _time.Text = "...";
+                _loadEl.Text = "Елемент не найден";
+                _loadLine.Text = "...";
+                _loadPlace.Text = "...";
                 return;
             }
 
+            string currPage = _cache.Rows[line].Cells[2].Value.ToString();
+            _loadPlace.Text = "КЭШ";
+            string time = "", el = "", _line = "";
 
-            string[] numbers = newLine.Text.Split(',');
-            string readyLine = "";
-
-            for (int i = 0; i < numbers.Length; i++)
+            if (Cache.SearchByAddr(line, number,
+               out time, out el, out _line) && (currPage.Equals(page.ToString())))
             {
-                readyLine += numbers[i].PadLeft(MM.ns, '0').Replace(' ', '0') + " ";
+                try
+                {
+                    Cache.SetLine(newLine.Text, line + 1);
+                }
+                catch
+                {
+                    _time.Text = time;
+                    _loadEl.Text = "Неверно задана новая строка!";
+                    _loadLine.Text = "...";
+                }
+
+                ReloadCache();
             }
+            else
+            {
+                _loadPlace.Text = "ОП";
 
-            Cache.SetLine(readyLine, _cache.CurrentCell.RowIndex + 1);
+                MM.SearchByAddr(page, line, number, out time, out el, out _line);
 
-            ReloadCache();
+                _cache.Rows[line].Cells[2].Value = page + 1;
+                
+                string oldLine = Cache.SetLine(newLine.Text, line + 1);
+
+                if (!oldLine.Equals(string.Empty))
+                {
+                    MM.SetLine(oldLine, Convert.ToInt32(currPage) * 10 + line + 1);
+                }
+
+                ReloadMM();
+                ReloadCache();
+            }
+                
+            _time.Text = time;
+            _loadEl.Text = el;
+            _loadLine.Text = _line;
 
         }
 
         public void ReloadCache()
         {
-            string t1, t2;
             string[] pages = new string[MM.la];
 
             for (int i = 0; i < MM.la; i++)
@@ -164,24 +241,9 @@ namespace ЭВМ_Лаб_4__WF_
 
             _cache.Rows.Clear();
 
-
             for (int i = 1; i <= MM.la; i++)
             {
-                int index = MM.SearchByKey(Cache.GetLine(i), out t1, out t2);
-
-                if (index % 10 == 0)
-                {
-                    index--;
-                }
-
-                if (index != -1)
-                {
-                    _cache.Rows.Add(i, Cache.GetLine(i), index / 10 + 1);
-                }
-                else
-                {
-                    _cache.Rows.Add(i, Cache.GetLine(i), pages[i - 1]);
-                }
+                _cache.Rows.Add(i, Cache.GetLine(i), pages[i - 1]);
             }
         }
 

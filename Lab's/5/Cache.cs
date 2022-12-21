@@ -39,6 +39,18 @@ namespace ЭВМ_Лаб_4__WF_
             return res.Substring(0, res.Length - 1);
         }
 
+        public static string[] GetLines()
+        {
+            string[] res = new string[MM.la];
+
+            for (int i = 1; i <= MM.la; i++)
+            {
+                res[i - 1] = GetLine(i);
+            }
+
+            return res;
+        }
+
         public static int SearchByKey(string key,
             out string time, out string _line)
         {
@@ -92,15 +104,39 @@ namespace ЭВМ_Лаб_4__WF_
                     res += _cache[index - 1][i] + " ";
                 }
 
-                _cache[index - 1] = data.Split(' ');
+                _cache[index - 1] = data.Split(' ', ',');
                 return res.Substring(0, res.Length - 1);
             }
 
-            _cache[index - 1] = data.Split(' ');
+            _cache[index - 1] = data.Split(' ', ',');
             return "";
 
         }
 
+        public static bool SearchByAddr(int line, int number,
+            out string time, out string el, out string _line)
+        {
+            Stopwatch st = new Stopwatch();
+
+            st.Start();
+
+            el = _cache[line][number];
+
+            st.Stop();
+
+            time = st.ElapsedTicks.ToString();
+
+            if (el == null)
+            {
+                el = "...";
+                _line = el;
+                return false;
+            }
+
+            _line = GetLine(line);
+            return true;
+
+        }
 
     }
 }

@@ -85,7 +85,7 @@ namespace ЭВМ_Лаб_4__WF_
 
                         time = st.ElapsedTicks.ToString();
                         _line = temp;
-                        el = ta[number - 1];
+                        el = ta[number];
                         return;
                     }
 
@@ -194,5 +194,6 @@ namespace ЭВМ_Лаб_4__WF_
 
         }
 
+       
     }
 }
