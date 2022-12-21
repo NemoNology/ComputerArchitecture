@@ -34,7 +34,13 @@ namespace ЭВМ_Лаб_4__WF_
             _mm.Rows.Clear();
 
             Cache.Load();
-            ReloadCache();
+
+            _cache.Rows.Clear();
+
+            for (int i = 1; i <= MM.la; i++)
+            {
+                _cache.Rows.Add(i, Cache.GetLine(i), string.Empty);
+            }
 
             MM.Create();
 
@@ -133,7 +139,7 @@ namespace ЭВМ_Лаб_4__WF_
             {
                 _loadPlace.Text = "ОП";
 
-                MM.SearchByAddr(Convert.ToInt32(key[0]), Convert.ToInt32(key[1]) + 1, Convert.ToInt32(key[2]) + 1,
+                MM.SearchByAddr(Convert.ToInt32(key[0]), Convert.ToInt32(key[1]), Convert.ToInt32(key[2]) + 1,
                     out time, out el, out line);
 
                 string oldLine = Cache.SetLine(line, Convert.ToInt32(key[1]) + 1);
