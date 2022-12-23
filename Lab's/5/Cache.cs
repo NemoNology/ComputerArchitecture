@@ -22,15 +22,6 @@ namespace ЭВМ_Лаб_4__WF_
         {
             string res = "";
 
-            if (index == 0)
-            {
-                index = 9;
-            }
-            else
-            {
-                index--;
-            }
-
             for (int i = 0; i < MM.na; i++)
             {
                 res += _cache[index][i] + " ";
@@ -39,21 +30,10 @@ namespace ЭВМ_Лаб_4__WF_
             return res.Substring(0, res.Length - 1);
         }
 
-        public static string[] GetLines()
-        {
-            string[] res = new string[MM.la];
-
-            for (int i = 1; i <= MM.la; i++)
-            {
-                res[i - 1] = GetLine(i);
-            }
-
-            return res;
-        }
-
-        public static int SearchByKey(string key,
+        public static bool SearchByKey(string key,
             out string time, out string _line)
         {
+            
             Stopwatch st = new Stopwatch();
 
             st.Start();
@@ -62,15 +42,21 @@ namespace ЭВМ_Лаб_4__WF_
             {
                 for (int j = 0; j < MM.na; j++)
                 {
-
-                    if (key == _cache[i][j])
+                    try
                     {
-                        st.Stop();
+                        if (key.IndexOf(_cache[i][j]) != -1)
+                        {
+                            st.Stop();
 
-                        time = st.ElapsedTicks.ToString();
-                        _line = GetLine(i);
+                            time = st.ElapsedTicks.ToString();
+                            _line = GetLine(i);
 
-                        return 1;
+                            return true;
+                        }
+                    }
+                    catch
+                    {
+
                     }
                 }
 
@@ -81,36 +67,7 @@ namespace ЭВМ_Лаб_4__WF_
             time = st.ElapsedTicks.ToString();
             _line = "...";
 
-            return -1;
-        }
-
-        public static string SetLine(string data, int index)
-        {
-            if (index > _cache.Length)
-            {
-                return "";
-            }
-            else if (index == 0)
-            {
-                index = 10;
-            }
-
-            if (_cache[index - 1][0] != null)
-            {
-                string res = "";
-
-                for (int i = 0; i < MM.na; i++)
-                {
-                    res += _cache[index - 1][i] + " ";
-                }
-
-                _cache[index - 1] = data.Split(' ', ',');
-                return res.Substring(0, res.Length - 1);
-            }
-
-            _cache[index - 1] = data.Split(' ', ',');
-            return "";
-
+            return false;
         }
 
         public static bool SearchByAddr(int line, int number,
@@ -120,23 +77,49 @@ namespace ЭВМ_Лаб_4__WF_
 
             st.Start();
 
-            el = _cache[line][number];
-
-            st.Stop();
-
-            time = st.ElapsedTicks.ToString();
-
-            if (el == null)
+            try
             {
-                el = "...";
-                _line = el;
+                el = _cache[line][number];
+                st.Stop();
+                time = st.ElapsedTicks.ToString();
+                _line = GetLine(line);
+                return true;
+            }
+            catch
+            {
+                st.Stop();
+                el = "Элемент не найден";
+                time = st.ElapsedTicks.ToString();
+                _line = "...";
                 return false;
             }
+        }
 
-            _line = GetLine(line);
-            return true;
+        public static string SetLine(string data, int index)
+        {
+            if (index > _cache.Length || index < 0)
+            {
+                return string.Empty;
+            }
+
+            if (_cache[index][0] != null)
+            {
+                string res = string.Empty;
+
+                for (int i = 0; i < MM.na; i++)
+                {
+                    res += _cache[index][i] + " ";
+                }
+
+                _cache[index] = data.Split(' ', '.', ',');
+                return res.Substring(0, res.Length - 1);
+            }
+
+            _cache[index] = data.Split(' ');
+            return string.Empty;
 
         }
+
 
     }
 }

@@ -7,9 +7,20 @@ namespace ЭВМ_Лаб_4__WF_
     class MM
     {
 
+        // fn - file name - file path
         private const string fn = "MM.txt";
 
-        public static int pa = 10, la = 10, na = 4, ns = 4;
+        // pa - pages amount
+        public static int pa = 10;
+
+        // la - lines amount
+        public static int la = 10;
+
+        // na - numbers amount
+        public static int na = 4;
+
+        // ns - number size - digits amount
+        public static int ns = 4;
 
 
         public static void Create()
@@ -60,10 +71,9 @@ namespace ЭВМ_Лаб_4__WF_
             using (StreamReader sr = new StreamReader(fn))
             {
                 Stopwatch st = new Stopwatch();
-                string temp = "";
-                int counter = 1;
+                int counter = 0;
 
-                if (number > na)
+                if (number >= na)
                 {
                     time = "...";
                     _line = "...";
@@ -75,16 +85,15 @@ namespace ЭВМ_Лаб_4__WF_
 
                 while (!sr.EndOfStream)
                 {
-                    temp = sr.ReadLine();
+                    _line = sr.ReadLine();
 
                     if (counter == page * 10 + line)
                     {
                         st.Stop();
 
-                        string[] ta = temp.Split(' ');
+                        string[] ta = _line.Split(' ');
 
                         time = st.ElapsedTicks.ToString();
-                        _line = temp;
                         el = ta[number];
                         return;
                     }
@@ -109,25 +118,23 @@ namespace ЭВМ_Лаб_4__WF_
             using (StreamReader sr = new StreamReader(fn))
             {
                 Stopwatch st = new Stopwatch();
-                string temp = "";
                 int index = 0;
 
                 st.Start();
 
                 while (!sr.EndOfStream)
                 {
-                    temp = sr.ReadLine();
-                    index++;
+                    _line = sr.ReadLine();
 
-                    if (temp.IndexOf(key) != -1)
+                    if (_line.IndexOf(key) != -1)
                     {
                         st.Stop();
 
                         time = st.ElapsedTicks.ToString();
-                        _line = temp;
                         return index;
                     }
 
+                    index++;
                 }
 
                 st.Stop();
@@ -150,7 +157,6 @@ namespace ЭВМ_Лаб_4__WF_
             string nfn = fn.Substring(0, fn.IndexOf(".")) + "2.txt";
 
             int counter = 0;
-            string temp = "";
 
             if (fi.Exists)
             {
@@ -164,17 +170,16 @@ namespace ЭВМ_Лаб_4__WF_
 
                     while (!sr.EndOfStream)
                     {
-                        temp = sr.ReadLine();
-                        counter++;
-
                         if (index == counter)
                         {
                             sw.WriteLine(Line);
                         }
                         else
                         {
-                            sw.WriteLine(temp);
+                            sw.WriteLine(sr.ReadLine());
                         }
+
+                        counter++;
 
                     }
 
@@ -193,7 +198,16 @@ namespace ЭВМ_Лаб_4__WF_
             fi.Delete();
 
         }
+		
+		public static void DeleteFile()
+		{
+			FileInfo fi = new FileInfo(fn);
+			
+			if (fi.Exists)
+            {
+                fi.Delete();
+            }
+		}
 
-       
     }
 }

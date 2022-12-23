@@ -29,15 +29,15 @@ namespace ЭВМ_Лаб_4__WF_
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this._mm = new System.Windows.Forms.DataGridView();
-            this.DataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._L1 = new System.Windows.Forms.Label();
             this._cache = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cacheLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._L2 = new System.Windows.Forms.Label();
             this._key = new System.Windows.Forms.MaskedTextBox();
             this._addr = new System.Windows.Forms.MaskedTextBox();
@@ -60,8 +60,17 @@ namespace ЭВМ_Лаб_4__WF_
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this._loadLine = new System.Windows.Forms.ToolStripStatusLabel();
-            this.newLine = new System.Windows.Forms.MaskedTextBox();
+            this.newLine1 = new System.Windows.Forms.MaskedTextBox();
             this.changeLine = new System.Windows.Forms.Button();
+            this.newLine2 = new System.Windows.Forms.MaskedTextBox();
+            this.newLine3 = new System.Windows.Forms.MaskedTextBox();
+            this.newLine4 = new System.Windows.Forms.MaskedTextBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cacheLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._mm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._cache)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -79,32 +88,9 @@ namespace ЭВМ_Лаб_4__WF_
             this.DataGridViewTextBoxColumn13});
             this._mm.Location = new System.Drawing.Point(450, 47);
             this._mm.Name = "_mm";
-            this._mm.Size = new System.Drawing.Size(322, 386);
+            this._mm.Size = new System.Drawing.Size(372, 478);
             this._mm.TabIndex = 0;
-            // 
-            // DataGridViewTextBoxColumn11
-            // 
-            this.DataGridViewTextBoxColumn11.FillWeight = 50F;
-            this.DataGridViewTextBoxColumn11.HeaderText = "№ строки";
-            this.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11";
-            this.DataGridViewTextBoxColumn11.ReadOnly = true;
-            this.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTextBoxColumn11.Width = 50;
-            // 
-            // DataGridViewTextBoxColumn12
-            // 
-            this.DataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DataGridViewTextBoxColumn12.HeaderText = "Строка";
-            this.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12";
-            this.DataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // DataGridViewTextBoxColumn13
-            // 
-            this.DataGridViewTextBoxColumn13.FillWeight = 50F;
-            this.DataGridViewTextBoxColumn13.HeaderText = "№ стр.";
-            this.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13";
-            this.DataGridViewTextBoxColumn13.ReadOnly = true;
-            this.DataGridViewTextBoxColumn13.Width = 50;
+            this._mm.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._mm_CellContentDoubleClick);
             // 
             // _L1
             // 
@@ -112,7 +98,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this._L1.AutoSize = true;
             this._L1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._L1.Location = new System.Drawing.Point(120, 183);
+            this._L1.Location = new System.Drawing.Point(133, 208);
             this._L1.Name = "_L1";
             this._L1.Size = new System.Drawing.Size(77, 31);
             this._L1.TabIndex = 1;
@@ -127,35 +113,11 @@ namespace ЭВМ_Лаб_4__WF_
             this.dataGridViewTextBoxColumn1,
             this.cacheLine,
             this.tag});
-            this._cache.Location = new System.Drawing.Point(12, 217);
+            this._cache.Location = new System.Drawing.Point(12, 242);
             this._cache.Name = "_cache";
-            this._cache.Size = new System.Drawing.Size(304, 216);
+            this._cache.Size = new System.Drawing.Size(318, 283);
             this._cache.TabIndex = 2;
-            this._cache.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._cache_CellClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "№ строки";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // cacheLine
-            // 
-            this.cacheLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cacheLine.HeaderText = "Строка";
-            this.cacheLine.Name = "cacheLine";
-            this.cacheLine.ReadOnly = true;
-            // 
-            // tag
-            // 
-            this.tag.FillWeight = 30F;
-            this.tag.HeaderText = "Тег";
-            this.tag.Name = "tag";
-            this.tag.ReadOnly = true;
-            this.tag.Width = 30;
+            this._cache.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._cache_CellContentDoubleClick);
             // 
             // _L2
             // 
@@ -171,25 +133,28 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // _key
             // 
-            this._key.Location = new System.Drawing.Point(12, 25);
-            this._key.Mask = "0999";
+            this._key.Location = new System.Drawing.Point(12, 21);
+            this._key.Mask = "0999.0999.0999.0999";
             this._key.Name = "_key";
-            this._key.Size = new System.Drawing.Size(165, 20);
+            this._key.Size = new System.Drawing.Size(206, 20);
             this._key.TabIndex = 4;
+            this._key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _addr
             // 
-            this._addr.Location = new System.Drawing.Point(12, 100);
+            this._addr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._addr.Location = new System.Drawing.Point(12, 85);
             this._addr.Mask = "0 0 0";
             this._addr.Name = "_addr";
-            this._addr.Size = new System.Drawing.Size(165, 20);
+            this._addr.Size = new System.Drawing.Size(206, 26);
             this._addr.TabIndex = 6;
+            this._addr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // searchAddr
             // 
-            this.searchAddr.Location = new System.Drawing.Point(210, 98);
+            this.searchAddr.Location = new System.Drawing.Point(224, 86);
             this.searchAddr.Name = "searchAddr";
-            this.searchAddr.Size = new System.Drawing.Size(106, 23);
+            this.searchAddr.Size = new System.Drawing.Size(106, 26);
             this.searchAddr.TabIndex = 8;
             this.searchAddr.Text = "Поиск по адресу";
             this.searchAddr.UseVisualStyleBackColor = true;
@@ -197,7 +162,7 @@ namespace ЭВМ_Лаб_4__WF_
             // 
             // searchKey
             // 
-            this.searchKey.Location = new System.Drawing.Point(210, 23);
+            this.searchKey.Location = new System.Drawing.Point(224, 18);
             this.searchKey.Name = "searchKey";
             this.searchKey.Size = new System.Drawing.Size(106, 23);
             this.searchKey.TabIndex = 8;
@@ -211,7 +176,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(15, 121);
+            this.label1.Location = new System.Drawing.Point(17, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 24);
             this.label1.TabIndex = 9;
@@ -223,7 +188,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(58, 75);
+            this.label2.Location = new System.Drawing.Point(67, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 24);
             this.label2.TabIndex = 9;
@@ -235,7 +200,7 @@ namespace ЭВМ_Лаб_4__WF_
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(122, 120);
+            this.label3.Location = new System.Drawing.Point(147, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 24);
             this.label3.TabIndex = 9;
@@ -266,9 +231,9 @@ namespace ЭВМ_Лаб_4__WF_
             this.toolStripStatusLabel7,
             this.toolStripStatusLabel8,
             this._loadLine});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 531);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(834, 22);
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -344,29 +309,127 @@ namespace ЭВМ_Лаб_4__WF_
             this._loadLine.Size = new System.Drawing.Size(16, 17);
             this._loadLine.Text = "...";
             // 
-            // newLine
+            // newLine1
             // 
-            this.newLine.Location = new System.Drawing.Point(12, 160);
-            this.newLine.Mask = "0999.0999.0999.0999";
-            this.newLine.Name = "newLine";
-            this.newLine.Size = new System.Drawing.Size(165, 20);
-            this.newLine.TabIndex = 4;
+            this.newLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLine1.Location = new System.Drawing.Point(12, 154);
+            this.newLine1.Mask = "0999";
+            this.newLine1.Name = "newLine1";
+            this.newLine1.Size = new System.Drawing.Size(47, 26);
+            this.newLine1.TabIndex = 4;
+            this.newLine1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // changeLine
             // 
-            this.changeLine.Location = new System.Drawing.Point(210, 151);
+            this.changeLine.Location = new System.Drawing.Point(224, 154);
             this.changeLine.Name = "changeLine";
-            this.changeLine.Size = new System.Drawing.Size(106, 36);
+            this.changeLine.Size = new System.Drawing.Size(106, 26);
             this.changeLine.TabIndex = 8;
-            this.changeLine.Text = "Изменить строку по адресу";
+            this.changeLine.Text = "Изменить строку";
             this.changeLine.UseVisualStyleBackColor = true;
             this.changeLine.Click += new System.EventHandler(this.changeLine_Click);
+            // 
+            // newLine2
+            // 
+            this.newLine2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLine2.Location = new System.Drawing.Point(65, 154);
+            this.newLine2.Mask = "0999";
+            this.newLine2.Name = "newLine2";
+            this.newLine2.Size = new System.Drawing.Size(47, 26);
+            this.newLine2.TabIndex = 4;
+            this.newLine2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // newLine3
+            // 
+            this.newLine3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLine3.Location = new System.Drawing.Point(118, 154);
+            this.newLine3.Mask = "0999";
+            this.newLine3.Name = "newLine3";
+            this.newLine3.Size = new System.Drawing.Size(47, 26);
+            this.newLine3.TabIndex = 4;
+            this.newLine3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // newLine4
+            // 
+            this.newLine4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLine4.Location = new System.Drawing.Point(171, 154);
+            this.newLine4.Mask = "0999";
+            this.newLine4.Name = "newLine4";
+            this.newLine4.Size = new System.Drawing.Size(47, 26);
+            this.newLine4.TabIndex = 4;
+            this.newLine4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle28;
+            this.dataGridViewTextBoxColumn1.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "№ строки";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // cacheLine
+            // 
+            this.cacheLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cacheLine.DefaultCellStyle = dataGridViewCellStyle29;
+            this.cacheLine.HeaderText = "Строка";
+            this.cacheLine.Name = "cacheLine";
+            this.cacheLine.ReadOnly = true;
+            // 
+            // tag
+            // 
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tag.DefaultCellStyle = dataGridViewCellStyle30;
+            this.tag.FillWeight = 40F;
+            this.tag.HeaderText = "Тег";
+            this.tag.Name = "tag";
+            this.tag.ReadOnly = true;
+            this.tag.Width = 40;
+            // 
+            // DataGridViewTextBoxColumn11
+            // 
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle25;
+            this.DataGridViewTextBoxColumn11.FillWeight = 50F;
+            this.DataGridViewTextBoxColumn11.HeaderText = "№ строки";
+            this.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11";
+            this.DataGridViewTextBoxColumn11.ReadOnly = true;
+            this.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTextBoxColumn11.Width = 50;
+            // 
+            // DataGridViewTextBoxColumn12
+            // 
+            this.DataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle26;
+            this.DataGridViewTextBoxColumn12.HeaderText = "Строка";
+            this.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12";
+            this.DataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // DataGridViewTextBoxColumn13
+            // 
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle27;
+            this.DataGridViewTextBoxColumn13.FillWeight = 50F;
+            this.DataGridViewTextBoxColumn13.HeaderText = "№ стр.";
+            this.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13";
+            this.DataGridViewTextBoxColumn13.ReadOnly = true;
+            this.DataGridViewTextBoxColumn13.Width = 50;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(834, 553);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -376,7 +439,10 @@ namespace ЭВМ_Лаб_4__WF_
             this.Controls.Add(this.searchKey);
             this.Controls.Add(this.searchAddr);
             this.Controls.Add(this._addr);
-            this.Controls.Add(this.newLine);
+            this.Controls.Add(this.newLine4);
+            this.Controls.Add(this.newLine3);
+            this.Controls.Add(this.newLine2);
+            this.Controls.Add(this.newLine1);
             this.Controls.Add(this._key);
             this.Controls.Add(this._L2);
             this.Controls.Add(this._cache);
@@ -413,21 +479,24 @@ namespace ЭВМ_Лаб_4__WF_
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private System.Windows.Forms.MaskedTextBox newLine;
+        private System.Windows.Forms.MaskedTextBox newLine1;
         private System.Windows.Forms.Button changeLine;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cacheLine;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tag;
         private System.Windows.Forms.ToolStripStatusLabel _loadPlace;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn13;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel _loadEl;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel8;
         private System.Windows.Forms.ToolStripStatusLabel _loadLine;
+        private System.Windows.Forms.MaskedTextBox newLine2;
+        private System.Windows.Forms.MaskedTextBox newLine3;
+        private System.Windows.Forms.MaskedTextBox newLine4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cacheLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumn13;
     }
 }
 
