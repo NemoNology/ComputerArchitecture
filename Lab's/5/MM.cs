@@ -173,6 +173,7 @@ namespace ЭВМ_Лаб_4__WF_
                         if (index == counter)
                         {
                             sw.WriteLine(Line);
+			    sr.ReadLine();
                         }
                         else
                         {
