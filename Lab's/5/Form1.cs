@@ -12,21 +12,11 @@ namespace ЭВМ_Лаб_4__WF_
         public Form1()
         {
             InitializeComponent();
+	    
             MM.Create();
             Cache.Load();
-
-            lines = MM.GetLines();
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                _mm.Rows.Add(i + 1, lines[i], i / 10 + 1);
-            }
-
-            for (int i = 0; i < MM.la; i++)
-            {
-                _cache.Rows.Add(i + 1, Cache.GetLine(i), " ");
-            }
-
+            ReloadCache();
+	    ReloadMM();
         }
 
         private void searchKey_Click(object sender, EventArgs e)
@@ -201,7 +191,7 @@ namespace ЭВМ_Лаб_4__WF_
             {
                 if (NL[i].Equals(string.Empty))
                 {
-                    MM.SearchByAddr(page, line, number, out _, out _, out string num);
+                    MM.SearchByAddr(page, line, number, out _, out string num, out _);
                     NL[i] = num;
                 }
 
