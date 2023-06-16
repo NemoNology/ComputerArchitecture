@@ -1,0 +1,37 @@
+FORMAT MZ
+ORG 100H
+
+
+MOV     AH, 02H
+
+MOV     SI, DN1
+FILD    DWORD [SI]
+FISTP   [R]
+
+MOV     DX, WORD [R]
+INT     21H
+
+MOV     SI, N1
+FILD    DWORD [SI]
+FISTP   [R]
+
+MOV     DX, WORD [R]
+INT     21H
+
+
+
+
+
+
+
+
+MOV     AH, 01H
+INT     21H
+
+MOV     AH, 4CH
+INT     21H
+
+
+DN1 DB 35H
+N1  DB 35
+R   DQ ?

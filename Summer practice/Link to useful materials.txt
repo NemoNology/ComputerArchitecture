@@ -1,0 +1,24 @@
+https://yadi.sk/d/_RdBAw5almHYXg (Link to files from ZabGU) (Мне это уже не нужно)
+
+
+FASM/ASM:
+	
+	https://kpe.hww.ru/ASM/Book/Charter5/1.htm#4
+	
+	http://flatassembler.narod.ru/fasm.htm (База)
+	
+	https://studiowildfox.com/articles/379-Samouchitel_po_yazyku_assembler(assembler)
+	
+	https://intuit.ru/studies/courses/640/496/lecture/11250
+	
+	http://natalia.appmat.ru/c&c++/assembler.html
+	
+	http://it.kgsu.ru/Assembler
+	
+	
+	
+Programming:
+
+	https://info-master.su/programming/profi/s-chego-nachat.php
+	
+	
